@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jQuery纵向时间轴</title>
+<link href="css/timeline.css" rel="stylesheet" />
+<style>
+
+.santa {
+    display: inline-block;
+    margin-left: -8px;
+    transform: scale(0.4);
+    vertical-align: middle;
+}
+.santa-body {
+    align-items: center;
+    animation: 2s ease-in-out 0s alternate none infinite running balance;
+    background-color: currentcolor;
+    border-radius: 50%;
+    box-shadow: 0 -0.25em rgba(0, 0, 0, 0.1) inset;
+    color: #f91047;
+    display: flex;
+    font-size: 60px;
+    height: 1em;
+    justify-content: center;
+    transform-origin: center bottom 0;
+    width: 1em;
+}
+.santa-head {
+    background-color: white;
+    border-radius: 0.5em;
+    font-size: 0.4em;
+    height: 1.9em;
+    position: relative;
+    transform: translateY(-1em);
+    width: 1em;
+}
+.santa-head::before {
+    background-color: #ff9876;
+    content: "";
+    display: block;
+    height: 0.375em;
+    left: 0;
+    position: absolute;
+    top: 0.65em;
+    width: 1em;
+}
+.santa-ear {
+    background-color: #fc8363;
+    height: 0.3em;
+    position: absolute;
+    top: 0.75em;
+    width: 0.1em;
+}
+.santa-ear:nth-of-type(1) {
+    border-radius: 0.05em 0 0 0.05em;
+    left: -0.1em;
+}
+.santa-ear:nth-of-type(2) {
+    border-radius: 0 0.05em 0.05em 0;
+    right: -0.1em;
+}
+.santa-hat {
+    background-color: white;
+    content: "";
+    height: 0.15em;
+    left: 0;
+    position: absolute;
+    top: 0.5em;
+    transform: scale(1.1);
+    width: 1em;
+}
+.santa-hat::before {
+    background: #f91047 none repeat scroll 0 0;
+    border-radius: 0.5em 0.5em 0 0;
+    content: "";
+    display: block;
+    height: 0.5em;
+    position: absolute;
+    top: -0.5em;
+    width: 1em;
+    z-index: 2;
+}
+.santa-hat::after {
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: -0.2em 0.2em 0 0.12em rgba(0, 0, 0, 0.2), -0.2em 0.2em 0 0.12em #f91047;
+    content: "";
+    display: block;
+    height: 0.25em;
+    position: absolute;
+    right: 0;
+    top: -0.72em;
+    width: 0.25em;
+    z-index: 0;
+}
+.santa-eye {
+    background-color: black;
+    border-radius: 50%;
+    height: 0.12em;
+    left: 0.2em;
+    position: absolute;
+    top: 0.76em;
+    width: 0.12em;
+}
+.santa-eye + .santa-eye {
+    left: auto;
+    right: 0.2em;
+}
+.santa-nose {
+    background-color: #f24c4c;
+    border-radius: 0 0 0.12em 0.12em;
+    height: 0.22em;
+    left: 50%;
+    position: absolute;
+    top: 0.84em;
+    transform: translateX(-50%);
+    width: 0.12em;
+}
+.santa-mouth {
+    animation: 4s linear 0s normal forwards infinite running hohoho;
+    background-color: black;
+    border-bottom-left-radius: 5vw;
+    border-bottom-right-radius: 5vw;
+    height: 0.1em;
+    left: 50%;
+    margin-top: 0.3em;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 0.18em;
+}
+@keyframes hohoho {
+0%, 10%, 20%, 40%, 100% {
+    border-bottom-left-radius: 1vw;
+    border-bottom-right-radius: 1vw;
+    height: 0.1em;
+    width: 0.18em;
+}
+5%, 15%, 25%, 35% {
+    border-radius: 50%;
+    height: 0.2em;
+    width: 0.15em;
+}
+}
+@keyframes balance {
+0% {
+    transform: rotate(-6deg);
+}
+100% {
+    transform: rotate(6deg);
+}
+}
+</style>
+</head>
+<body>
+
+<div class="main">
+  <div class="timeline">
+    <div class="timeline-date">
+      <ul>
+        <li class="green complete">
+          <!-- <h3>10.08<span>2012</span></h3> -->
+          <h3>2018-01-01</h3>
+          <dl>
+            <dt>工序1
+               <!-- <img src="images/icon07.gif"  alt="xx" />
+	             <span>已完成</span> -->
+	          </dt>
+          </dl>
+        </li>
+
+        <li class="green">
+          <!-- <h3>10.08<span>2012</span></h3> -->
+          <h3>2018-01-02</h3>
+          <dl>
+            <dt>工序2
+               <!-- <img src="images/icon07.gif"  alt="xx" />
+	             <span>已完成</span> -->
+	          </dt>
+          </dl>
+        </li>
+
+        <li class="green">
+          <!-- <h3>10.08<span>2012</span></h3> -->
+          <h3>2018-01-03</h3>
+          <dl>
+            <dt>
+              <div class="santa-body">
+                <div class="santa-head">
+                  <div class="santa-ear"></div>
+                  <div class="santa-ear"></div>
+                  <div class="santa-hat"></div>
+                  <div class="santa-eye"></div>
+                  <div class="santa-eye"></div>
+                  <div class="santa-nose"></div>
+                  <div class="santa-mouth"></div>
+                </div>
+              </div>
+	          </dt>
+          </dl>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script src="js/jquery.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
